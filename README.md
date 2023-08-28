@@ -7,6 +7,8 @@ This makes it impractical to use the real-time data provided by Turris Sentinel 
 
 `dynafire` is a lightweight Linux daemon that lets any Linux system running the industry standard `firewalld` firewall update its firewall rules in real-time based on Sentinel data.
 
+Turris Sentinel data by TurrisTech is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
+
 Installation via package managers
 -
 TODO

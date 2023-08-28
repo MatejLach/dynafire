@@ -11,7 +11,7 @@ Turris Sentinel data by TurrisTech is licensed under a Creative Commons Attribut
 
 Installation via package managers
 -
-TODO
+Arch Linux (AUR): [dynafire-bin](https://aur.archlinux.org/packages/dynafire-bin)
 
 Manual installation
 -

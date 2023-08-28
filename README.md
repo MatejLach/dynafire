@@ -27,7 +27,7 @@ active
 
 Download the binary:
 
-TODO
+`$ wget https://github.com/MatejLach/dynafire/releases/download/v0.1/dynafire`
 
 Ensure the binary is executable:
 
@@ -40,16 +40,34 @@ Copy the binary to your `$PATH`:
 
 Next, download the `systemd` service definition file:
 
-TODO 
+`$ wget https://raw.githubusercontent.com/MatejLach/dynafire/main/dist/systemd/dynafire.service` 
+
+Copy it under where `systemd` would be able to see it i.e. `/lib/systemd/system` or `/etc/systemd/system`:
+
+`$ sudo cp dynafire.service /lib/systemd/system/`
+
+Register the new service with `systemd`:
+
+`$ sudo systemctl daemon-reload`
+
+Then, assuming `firewalld` is already running, enable it at boot and start with:
+
+`$ sudo systemctl enable dynafire --now`
 
 Building from source
 -
+Clone the source:
 
-TODO
+`$ git clone https://github.com/MatejLach/dynafire.git && cd dynafire/cmd/dynafire`
+
+Then, assuming a properly [set up Go toolchain](https://golang.org/doc/install), simply run:
+
+`$ go build`
+
+Copy the resulting `dynafire` binary under `/usr/bin` and use the [systemd service](dist/systemd/dynafire.service) to manage its lifecycle, see [Manual Installation](#manual-installation) for details.
 
 Configuration
 -
-
 The `dynafire` configuration file is created upon first launch under `/etc/dynafire/config.json`.
 By default, it has the following values:
 

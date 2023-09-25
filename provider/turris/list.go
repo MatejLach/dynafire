@@ -12,7 +12,7 @@ import (
 
 type List struct {
 	Version   time.Time
-	Serial    uint16
+	Serial    uint32
 	Blacklist []net.IP
 	Timestamp time.Time
 }
@@ -38,7 +38,11 @@ func (c *Client) decodeList(rawMsg []byte) (List, error) {
 	}
 
 	version := rawMap["version"].(uint32)
-	serial := rawMap["serial"].(uint16)
+	serial, ok := rawMap["serial"].(uint32)
+	if !ok {
+		serial = uint32(rawMap["serial"].(uint16))
+	}
+
 	rawBlocklist := rawMap["list"].([]interface{})
 	ts := rawMap["ts"].(uint32)
 

@@ -13,7 +13,7 @@ import (
 type Delta struct {
 	Operation string
 	IP        net.IP
-	Serial    uint16
+	Serial    uint32
 	Timestamp time.Time
 }
 
@@ -38,7 +38,11 @@ func (c *Client) decodeDelta(rawMsg []byte) (Delta, error) {
 
 	operation := rawMap["delta"].(string)
 	ip := rawMap["ip"].(string)
-	serial := rawMap["serial"].(uint16)
+	serial, ok := rawMap["serial"].(uint32)
+	if !ok {
+		serial = uint32(rawMap["serial"].(uint16))
+	}
+
 	ts := rawMap["ts"].(uint32)
 
 	return Delta{

@@ -112,7 +112,7 @@ func (c *Client) Connect() error {
 }
 
 func (c *Client) RequestMessages(ctx context.Context) {
-	var previousDeltaSerial uint16
+	var previousDeltaSerial uint32
 	refreshList := true // upon launch, initialize the list
 
 	for {
@@ -173,7 +173,7 @@ func (c *Client) RequestMessages(ctx context.Context) {
 	}
 }
 
-func serialOk(oldSerial, currentSerial uint16) bool {
+func serialOk(oldSerial, currentSerial uint32) bool {
 	if (oldSerial+1 == currentSerial) || oldSerial == 0 {
 		return true
 	}

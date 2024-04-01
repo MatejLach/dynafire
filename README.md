@@ -29,7 +29,7 @@ active
 
 Download the binary:
 
-`$ wget https://github.com/MatejLach/dynafire/releases/download/v0.1/dynafire`
+`$ wget https://github.com/MatejLach/dynafire/releases/download/v0.2.1/dynafire`
 
 Ensure the binary is executable:
 

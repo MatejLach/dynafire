@@ -144,6 +144,7 @@ func (c *Client) RequestMessages(ctx context.Context) {
 			if !serialOk(previousDeltaSerial, dRes.Serial) {
 				refreshList = true
 				previousDeltaSerial = 0
+				continue
 			}
 
 			previousDeltaSerial = dRes.Serial

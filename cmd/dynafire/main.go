@@ -6,6 +6,7 @@ import (
 	"log/slog"
 	"os"
 	"sync"
+	"time"
 
 	"github.com/MatejLach/dynafire/firewall/firewalld"
 	"github.com/MatejLach/dynafire/provider/turris"
@@ -91,6 +92,7 @@ func main() {
 
 				slog.Debug("whitelisting", "IP", deltaMsg.IP.String())
 			}
+			time.Sleep(250 * time.Millisecond)
 			<-sem
 		}
 	}()

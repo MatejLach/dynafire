@@ -17,7 +17,7 @@ Manual installation
 -
 Because `dynafire` ships as a single binary, it is easy to install it manually on practically any `systemd`-based distro.
 
-Before proceeding please ensure that both `NetworkManager` and `firewalld` are installed and running:
+Before proceeding please ensure that `ZeroMQ` (tested with *4.3.5*), `NetworkManager` and `firewalld` are installed and running:
 
 ```shell
 $ sudo systemctl check NetworkManager                                   

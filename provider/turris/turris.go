@@ -32,26 +32,31 @@ type Client struct {
 func NewClient(zmqServerUrl string, zmqServerPort int) (*Client, error) {
 	zmqCtx, err := zmq.NewContext()
 	if err != nil {
+		slog.Debug("creating ZMQ context", "details", err)
 		return nil, err
 	}
 
 	zmqClient, err := zmqCtx.NewSocket(zmq.SUB)
 	if err != nil {
+		slog.Debug("creating ZMQ SUB socket", "details", err)
 		return nil, err
 	}
 
 	zmqServerPubKey, err := getServerPubKey(CertUrl)
 	if err != nil {
+		slog.Debug("fetching Turris public key", "details", err)
 		return nil, err
 	}
 
 	zmqClientPubKey, zmqClientPrivateKey, err := zmq.NewCurveKeypair()
 	if err != nil {
+		slog.Debug("creating Turris client key pair", "details", err)
 		return nil, err
 	}
 
 	err = zmqClient.SetSubscribe("dynfw/")
 	if err != nil {
+		slog.Debug("subscribing to Turris dynfw messages", "details", err)
 		return nil, err
 	}
 
